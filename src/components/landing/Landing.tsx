@@ -224,16 +224,16 @@ function Hero({ goNext }: { goNext: () => void }) {
         <Reveal y={12} className="mb-7 inline-flex items-center gap-2 rounded-full border border-night-line bg-white/5 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.18em] text-night-text/85 backdrop-blur">
           <span className="h-1.5 w-1.5 rounded-full bg-glow-money" /> <LiveChip />
         </Reveal>
-        <h1 className="max-w-[14ch] font-display text-[clamp(38px,min(8.4vw,10.5vh),128px)] font-extrabold leading-[0.9] tracking-[-0.045em]">
-          <Words text="Four apps track Ravi." />
+        <h1 className="font-display text-[clamp(44px,min(9.6vw,12.5vh),148px)] font-extrabold leading-[0.9] tracking-[-0.045em]">
+          <Words text="Make every" />
           <br />
-          <Words text="None of them" delay={0.25} />{' '}
+          <Words text="kilometre" delay={0.2} />{' '}
           <span className="font-serif text-[1.08em] font-normal italic tracking-[-0.02em] text-glow-heat">
-            <Words text="work for him." delay={0.45} />
+            <Words text="pay." delay={0.4} />
           </span>
         </h1>
-        <Reveal delay={0.7} className="mt-6 max-w-[520px] text-[17px] font-medium leading-relaxed text-night-text/75 sm:text-lg">
-          The earnings coach, accountant and union rep in every gig worker&apos;s pocket. Real hourly wage, unpaid waiting, where to ride next, and appeals written for you.
+        <Reveal delay={0.7} className="mt-6 max-w-[560px] text-[17px] font-medium leading-relaxed text-night-text/75 sm:text-lg">
+          The app for Bengaluru&apos;s delivery and bike-taxi riders. See what you <strong className="font-extrabold text-night-text">really earn</strong> after fuel and waiting, know <strong className="font-extrabold text-night-text">where the orders are</strong> before you ride, and get your <strong className="font-extrabold text-night-text">appeal written</strong> when your ID is blocked.
         </Reveal>
         <Reveal delay={0.85} className="mt-7 flex flex-wrap gap-3">
           <Link href="/signup" className="group flex h-13 items-center gap-2 rounded-full bg-glow-heat px-7 text-[15px] font-extrabold text-night transition hover:brightness-110">

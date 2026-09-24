@@ -7,7 +7,7 @@ const manrope = Manrope({ variable: '--font-manrope', subsets: ['latin'], weight
 const instrument = Instrument_Serif({ variable: '--font-instrument', subsets: ['latin'], weight: '400', style: ['normal', 'italic'] });
 
 export const metadata: Metadata = {
-  title: 'Kilometre · The app that works for gig workers',
+  title: 'Kilometre · Make every kilometre pay',
   description: 'Real hourly wage, restaurant wait times, where to ride next, and AI-written appeals for Bengaluru gig workers.',
 };
 
