@@ -509,11 +509,21 @@ function JoinChapter({ signedIn }: { signedIn: boolean }) {
       <footer className="mx-auto mt-16 w-full max-w-[1400px] px-5 pb-8 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6 border-t border-night-line pt-6">
           <div>
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-night-muted">Co-founders</p>
-            <ol className="mt-2 flex flex-wrap gap-x-8 gap-y-1 font-display text-lg font-extrabold text-night-text">
-              <li><span className="num mr-2 text-glow-heat">1.</span>Daksh Bhatt</li>
-              <li><span className="num mr-2 text-glow-heat">2.</span>Shourya Chouhan</li>
-            </ol>
+            <Reveal y={12} className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-[0.24em] text-night-muted">
+              <motion.span
+                className="block h-px w-10 origin-left bg-glow-heat"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ amount: 0.8 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              />
+              Co-founded by
+            </Reveal>
+            <p className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 font-display text-[clamp(28px,4vw,48px)] font-extrabold leading-none tracking-[-0.03em] text-night-text">
+              <Words text="Daksh Bhatt" delay={0.1} />
+              <span className="font-serif text-[1.1em] font-normal italic text-glow-heat"><Words text="&" delay={0.3} /></span>
+              <Words text="Shourya Chouhan" delay={0.4} />
+            </p>
           </div>
           <p className="max-w-md text-xs font-semibold text-night-muted">
             Map demand is simulated for this demo. Map data © OpenStreetMap contributors · tiles by OpenFreeMap.
