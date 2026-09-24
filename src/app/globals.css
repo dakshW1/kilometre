@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #F3F4EF;
+  --surface: #FFFFFF;
+  --ink: #15171B;
+  --ink-2: #3E444C;
+  --muted: #5B616B;
+  --line: #E3E5DE;
+  --money: #0B7A4F;
+  --money-soft: #E4F3EB;
+  --heat: #D9501F;
+  --heat-soft: #FCEDE6;
+  --amber: #E8A317;
+  --amber-soft: #FFF3D6;
+  --danger: #C22F3D;
+  --danger-soft: #FDE8EA;
+  --info: #2F6FB0;
+  --info-soft: #E6F0FA;
+
+  --night: #090C12;
+  --night-2: #111622;
+  --night-line: rgba(255, 255, 255, 0.1);
+  --night-text: #ECEEF3;
+  --night-muted: #9AA1AE;
+  --glow-heat: #FF7A3D;
+  --glow-money: #6EE0A4;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-money: var(--money);
+  --color-money-soft: var(--money-soft);
+  --color-heat: var(--heat);
+  --color-heat-soft: var(--heat-soft);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-night-line: var(--night-line);
+  --color-night-text: var(--night-text);
+  --color-night-muted: var(--night-muted);
+  --color-glow-heat: var(--glow-heat);
+  --color-glow-money: var(--glow-money);
+
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-instrument);
+}
+
+html { background: var(--paper); }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.num { font-family: var(--font-bricolage), sans-serif; font-variant-numeric: tabular-nums; }
+
+/* Grain overlay for the night hero so it doesn't look like flat CSS */
+.grain::after {
+  content: "";
+  position: fixed; inset: -50%;
+  pointer-events: none; z-index: 5; opacity: 0.06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee { animation: marquee 38s linear infinite; }
+
+@keyframes pulse-ring { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(2.4); opacity: 0; } }
+.pulse-ring { animation: pulse-ring 1.8s ease-out infinite; }
+
+@keyframes caret { 50% { opacity: 0; } }
+.caret { animation: caret 1s step-end infinite; }
+
+.maplibregl-ctrl-attrib { font-size: 10px; opacity: 0.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee, .pulse-ring, .caret { animation: none; }
+}
