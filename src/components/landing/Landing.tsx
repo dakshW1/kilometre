@@ -506,8 +506,19 @@ function JoinChapter({ signedIn }: { signedIn: boolean }) {
           ))}
         </Reveal>
       </div>
-      <footer className="mx-auto mt-16 w-full max-w-[1400px] px-5 pb-8 text-xs font-semibold text-night-muted sm:px-8">
-        Map demand is simulated for this demo. Map data © OpenStreetMap contributors · tiles by OpenFreeMap.
+      <footer className="mx-auto mt-16 w-full max-w-[1400px] px-5 pb-8 sm:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-6 border-t border-night-line pt-6">
+          <div>
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-night-muted">Co-founders</p>
+            <ol className="mt-2 flex flex-wrap gap-x-8 gap-y-1 font-display text-lg font-extrabold text-night-text">
+              <li><span className="num mr-2 text-glow-heat">1.</span>Daksh Bhatt</li>
+              <li><span className="num mr-2 text-glow-heat">2.</span>Shourya Chouhan</li>
+            </ol>
+          </div>
+          <p className="max-w-md text-xs font-semibold text-night-muted">
+            Map demand is simulated for this demo. Map data © OpenStreetMap contributors · tiles by OpenFreeMap.
+          </p>
+        </div>
       </footer>
     </section>
   );
