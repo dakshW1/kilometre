@@ -4,9 +4,9 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Lenis from 'lenis';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import type { Map as MLMap } from 'maplibre-gl';
-import { ArrowRight, CloudRain, FileText, Flag, ScanLine, Timer, TrendingUp, Upload } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CloudRain, FileText, Flag, ScanLine, Timer, TrendingUp, Upload } from 'lucide-react';
 import { Logo } from '@/components/ui/Logo';
 import { CountTo, Reveal, Typewriter, Words } from './motion-bits';
 import { PLATFORMS, ZONES, formatHour, periodLabel, zoneStates } from '@/lib/geo';
@@ -475,6 +475,19 @@ function AppealChapter() {
   );
 }
 
+const FOUNDERS = [
+  { name: 'Daksh Bhatt', linkedin: 'https://www.linkedin.com/in/daksh-bhatt-34063b396' },
+  { name: 'Shourya Chouhan', linkedin: 'https://www.linkedin.com/in/shourya-pratap-singh-chouhan-b06294242/' },
+];
+
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z" />
+    </svg>
+  );
+}
+
 function JoinChapter({ signedIn }: { signedIn: boolean }) {
   return (
     <section id="join" className="relative flex min-h-screen flex-col justify-center">
@@ -519,11 +532,37 @@ function JoinChapter({ signedIn }: { signedIn: boolean }) {
               />
               Co-founded by
             </Reveal>
-            <p className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 font-display text-[clamp(28px,4vw,48px)] font-extrabold leading-none tracking-[-0.03em] text-night-text">
-              <Words text="Daksh Bhatt" delay={0.1} />
-              <span className="font-serif text-[1.1em] font-normal italic text-glow-heat"><Words text="&" delay={0.3} /></span>
-              <Words text="Shourya Chouhan" delay={0.4} />
-            </p>
+            <div className="mt-3 flex flex-wrap items-start gap-x-5 gap-y-4">
+              {FOUNDERS.map((f, i) => (
+                <Fragment key={f.name}>
+                  {i > 0 && (
+                    <span className="font-serif text-[clamp(31px,4.4vw,53px)] font-normal italic leading-none text-glow-heat">
+                      <Words text="&" delay={0.3} />
+                    </span>
+                  )}
+                  <div className="flex flex-col items-start gap-3">
+                    <span className="font-display text-[clamp(28px,4vw,48px)] font-extrabold leading-none tracking-[-0.03em] text-night-text">
+                      <Words text={f.name} delay={0.1 + i * 0.3} />
+                    </span>
+                    <Reveal y={16} delay={0.35 + i * 0.3}>
+                      <a
+                        href={f.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${f.name} on LinkedIn (opens in a new tab)`}
+                        className="group flex h-10 items-center gap-2 rounded-full border border-white/15 bg-white/5 pl-1.5 pr-4 text-[13px] font-extrabold text-night-text backdrop-blur transition hover:border-[#0A66C2] hover:bg-[#0A66C2]"
+                      >
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0A66C2] transition group-hover:bg-white">
+                          <LinkedInIcon className="h-3.5 w-3.5 fill-white transition group-hover:fill-[#0A66C2]" />
+                        </span>
+                        LinkedIn
+                        <ArrowUpRight size={14} className="opacity-60 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                      </a>
+                    </Reveal>
+                  </div>
+                </Fragment>
+              ))}
+            </div>
           </div>
           <p className="max-w-md text-xs font-semibold text-night-muted">
             Map demand is simulated for this demo. Map data © OpenStreetMap contributors · tiles by OpenFreeMap.
