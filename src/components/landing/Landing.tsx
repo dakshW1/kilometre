@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Lenis from 'lenis';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Map as MLMap } from 'maplibre-gl';
 import { ArrowRight, ArrowUpRight, CloudRain, FileText, Flag, ScanLine, Timer, TrendingUp, Upload } from 'lucide-react';
 import { Logo } from '@/components/ui/Logo';
@@ -478,6 +478,8 @@ function AppealChapter() {
 const FOUNDERS = [
   { name: 'Daksh Bhatt', linkedin: 'https://www.linkedin.com/in/daksh-bhatt-34063b396' },
   { name: 'Shourya Chouhan', linkedin: 'https://www.linkedin.com/in/shourya-pratap-singh-chouhan-b06294242/' },
+  { name: 'Shreya Singh Chauhan', linkedin: 'https://www.linkedin.com/in/shreya-singh-chauhan-a7757337a/' },
+  { name: 'Devansh Jain', linkedin: 'https://www.linkedin.com/in/devanshjain4116/' },
 ];
 
 function LinkedInIcon({ className }: { className?: string }) {
@@ -520,51 +522,42 @@ function JoinChapter({ signedIn }: { signedIn: boolean }) {
         </Reveal>
       </div>
       <footer className="mx-auto mt-16 w-full max-w-[1400px] px-5 pb-8 sm:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-6 border-t border-night-line pt-6">
-          <div>
-            <Reveal y={12} className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-[0.24em] text-night-muted">
-              <motion.span
-                className="block h-px w-10 origin-left bg-glow-heat"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ amount: 0.8 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              />
-              Co-founded by
-            </Reveal>
-            <div className="mt-3 flex flex-wrap items-start gap-x-5 gap-y-4">
-              {FOUNDERS.map((f, i) => (
-                <Fragment key={f.name}>
-                  {i > 0 && (
-                    <span className="font-serif text-[clamp(31px,4.4vw,53px)] font-normal italic leading-none text-glow-heat">
-                      <Words text="&" delay={0.3} />
+        <div className="border-t border-night-line pt-6">
+          <Reveal y={12} className="flex items-center gap-3 text-[11px] font-extrabold uppercase tracking-[0.24em] text-night-muted">
+            <motion.span
+              className="block h-px w-10 origin-left bg-glow-heat"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ amount: 0.8 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            />
+            Co-founded by
+          </Reveal>
+          <ul className="mt-4 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+            {FOUNDERS.map((f, i) => (
+              <li key={f.name} className="flex flex-col items-start gap-3">
+                <span className="font-display text-[clamp(24px,2.6vw,36px)] font-extrabold leading-[1.05] tracking-[-0.03em] text-night-text">
+                  <Words text={f.name} delay={0.1 + i * 0.18} />
+                </span>
+                <Reveal y={16} delay={0.35 + i * 0.18}>
+                  <a
+                    href={f.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${f.name} on LinkedIn (opens in a new tab)`}
+                    className="group flex h-10 items-center gap-2 rounded-full border border-white/15 bg-white/5 pl-1.5 pr-4 text-[13px] font-extrabold text-night-text backdrop-blur transition hover:border-[#0A66C2] hover:bg-[#0A66C2]"
+                  >
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0A66C2] transition group-hover:bg-white">
+                      <LinkedInIcon className="h-3.5 w-3.5 fill-white transition group-hover:fill-[#0A66C2]" />
                     </span>
-                  )}
-                  <div className="flex flex-col items-start gap-3">
-                    <span className="font-display text-[clamp(28px,4vw,48px)] font-extrabold leading-none tracking-[-0.03em] text-night-text">
-                      <Words text={f.name} delay={0.1 + i * 0.3} />
-                    </span>
-                    <Reveal y={16} delay={0.35 + i * 0.3}>
-                      <a
-                        href={f.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${f.name} on LinkedIn (opens in a new tab)`}
-                        className="group flex h-10 items-center gap-2 rounded-full border border-white/15 bg-white/5 pl-1.5 pr-4 text-[13px] font-extrabold text-night-text backdrop-blur transition hover:border-[#0A66C2] hover:bg-[#0A66C2]"
-                      >
-                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0A66C2] transition group-hover:bg-white">
-                          <LinkedInIcon className="h-3.5 w-3.5 fill-white transition group-hover:fill-[#0A66C2]" />
-                        </span>
-                        LinkedIn
-                        <ArrowUpRight size={14} className="opacity-60 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
-                      </a>
-                    </Reveal>
-                  </div>
-                </Fragment>
-              ))}
-            </div>
-          </div>
-          <p className="max-w-md text-xs font-semibold text-night-muted">
+                    LinkedIn
+                    <ArrowUpRight size={14} className="opacity-60 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                  </a>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-xs font-semibold text-night-muted">
             Map demand is simulated for this demo. Map data © OpenStreetMap contributors · tiles by OpenFreeMap.
           </p>
         </div>
