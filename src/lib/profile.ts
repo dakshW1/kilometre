@@ -12,6 +12,7 @@ export interface Profile {
   daily_target: number;
   home_zone: string | null;
   onboarded: boolean;
+  created_at?: string | null;
 }
 
 export const defaultProfile = (id: string, name = ''): Profile => ({

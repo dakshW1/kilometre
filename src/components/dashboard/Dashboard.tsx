@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { useMemo, useState, useTransition } from 'react';
-import { ArrowRight, Database, LoaderCircle, Map, Mic, Navigation, Scale, Timer, Trash2, Upload } from 'lucide-react';
+import { ArrowRight, Crown, Database, LoaderCircle, Map, Mic, Navigation, Scale, Timer, Trash2, Upload } from 'lucide-react';
 import { useProfile } from '@/components/app/ProfileContext';
+import { trialStatus } from '@/lib/plan';
 import { WeatherCard } from '@/components/weather/WeatherBits';
 import { useWeatherReport } from '@/components/weather/WeatherContext';
 import { CountTo } from '@/components/landing/motion-bits';
@@ -53,6 +54,9 @@ export default function Dashboard({ today, earnings, waits }: { today: string; e
           </h1>
         </div>
         <div className="flex flex-wrap gap-2">
+          <Link href="/app/plan" className="flex h-11 items-center gap-2 rounded-xl bg-money-soft px-4 text-sm font-extrabold text-[#075C3B] hover:brightness-95">
+            <Crown size={16} /> Free trial · {trialStatus(profile.created_at).daysLeft} days left
+          </Link>
           {hasSeed ? (
             <button type="button" disabled={pending} onClick={() => run(clearDemoData, 'Demo data cleared.')} className="flex h-11 cursor-pointer items-center gap-2 rounded-xl border border-line bg-surface px-4 text-sm font-extrabold hover:border-ink/30 disabled:opacity-50">
               {pending ? <LoaderCircle size={16} className="animate-spin" /> : <Trash2 size={16} />} Clear demo data

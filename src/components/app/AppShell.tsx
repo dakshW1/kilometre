@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState, type ReactNode } from 'react';
-import { House, LogOut, Map, Mic, Scale, Timer, Upload } from 'lucide-react';
+import { Crown, House, LogOut, Map, Mic, Scale, Timer, Upload } from 'lucide-react';
 import { LogoMark } from '@/components/ui/Logo';
 import { useProfile } from './ProfileContext';
 import { useWeather } from '@/lib/useWeather';
@@ -17,6 +17,7 @@ const NAV = [
   { href: '/app/import', label: 'Import', icon: Upload },
   { href: '/app/log', label: 'Quick log', icon: Mic },
   { href: '/app/appeal', label: 'Appeals', icon: Scale },
+  { href: '/app/plan', label: 'Plan · ₹99/mo', icon: Crown },
 ];
 
 export default function AppShell({ children }: { children: ReactNode }) {
@@ -80,7 +81,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       </WeatherContext.Provider>
 
       <nav aria-label="Main" className="fixed inset-x-0 bottom-0 z-40 flex h-[72px] items-stretch justify-around border-t border-line bg-surface/95 px-1 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
-        {NAV.filter((n) => n.href !== '/app/log').map(({ href, label, icon: Icon }) => (
+        {NAV.filter((n) => n.href !== '/app/log' && n.href !== '/app/plan').map(({ href, label, icon: Icon }) => (
           <Link
             key={href}
             href={href}
